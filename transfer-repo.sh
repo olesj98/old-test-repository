@@ -19,6 +19,7 @@
 # git checkout -b <branch> origin/<branch>
 
 # Now we have to have all remote branches locally.
+git remote set-url origin https://github.com/olesj98/old-test-repository.git
 
 git pull
 
