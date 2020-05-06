@@ -19,15 +19,20 @@
 # git checkout -b <branch> origin/<branch>
 
 # Now we have to have all remote branches locally.
-branch_name=$1
+branch_name_ibm=$1
+branch_name_target=$2
 
-# git pull
+git checkout $branch_name_ibm
+git pull
 
 ### Step 2. Add a "new repo" as a new remote origin:
 git remote add new-origin https://github.com/olesj98/new-test-transfer.git
 
 # git push -u new-origin BRANCHNAME -f
-git push new-origin $branch_name -f
+git checkout -b $branch_name_target
+git push new-origin -f
+git branch -d $branch_name_target
+# git push new-origin $branch_name_target -f
 ### Step 3. Push all local branches and tags to a "new repo".
 # Push all local branches (note we're pushing to new-origin):
 # ====
