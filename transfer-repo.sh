@@ -2,7 +2,7 @@
 
 branch_name_ibm=$1
 branch_name_target=$2
-# add new-origin pekao repo
+# add new-origin pekao repo (one time action)
 git remote add new-origin https://github.com/olesj98/new-test-transfer.git
 # checkout to target ibm branch
 # git checkout $branch_name_ibm
