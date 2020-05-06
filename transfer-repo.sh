@@ -31,8 +31,8 @@ git remote add new-origin https://github.com/olesj98/new-test-transfer.git
 # git push -u new-origin BRANCHNAME -f
 git checkout -b $branch_name_target
 git push -u new-origin $branch_name_target -f
+git checkout $branch_name_ibm
 git branch -d $branch_name_target
-# git push new-origin $branch_name_target -f
 ### Step 3. Push all local branches and tags to a "new repo".
 # Push all local branches (note we're pushing to new-origin):
 # ====
