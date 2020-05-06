@@ -11,7 +11,7 @@ git remote add new-origin https://github.com/olesj98/new-test-transfer.git
 # create and checkout to new temporary local branch with pekao target name
 git checkout -b $branch_name_target
 # pull from ibm target branch
-git pull --rebase origin $branch_name_ibm
+git pull origin $branch_name_ibm
 # push to upstream new branch in pekao repo ??upstream??
 git push -u new-origin $branch_name_target -f
 # checkout to ibm target branch
