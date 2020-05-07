@@ -58,8 +58,17 @@
 # # remove the now-unneeded reference to oldrepo
 # git remote remove oldrepo
 # ########################################################
+branch=$1
+branch_target=$2
 
 git remote add -f repo_b_origin https://github.com/olesj98/new-test-transfer.git
 git remote update
-git diff master repo_b_origin/master
+# git rev-list remotes/repo_b_origin/master..master --format="%h - %ad - %s" --date=format:'%b %d %Y'
+# git diff remotes/repo_b_origin/master master
+for commit in $(git rev-list remotes/repo_b_origin/$branch_target..$branch)
+do
+    echo $commit
+    git cherry-pick $commit
+    git push repo_b_origin $branch_target
+done
 git remote rm repo_b_origin
