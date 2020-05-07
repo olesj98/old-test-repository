@@ -19,10 +19,11 @@
 # # delete temporary pekao target branch
 # git branch -d $branch_name_target
 
-branch=$1
-branch_compare=$2
+# ########################################################
+# branch=$1
+# branch_compare=$2
 
-# for commit in $(git rev-list HEAD)
+# for commit in $(git rev-list $branch_compare..$branch)
 # do
 #     echo $commit
 #     # if git ls-tree --name-only -r $commit; then
@@ -30,4 +31,35 @@ branch_compare=$2
 #     # fi
 # done
 
-git log $branch..$branch_compare --format="%h - %ad - %s" --date=format:'%b %d %Y'
+# ########################################################
+# git rev-list $branch_compare..$branch --format="%h - %ad - %s" --date=format:'%b %d %Y'
+# ########################################################
+
+# # add the old repo as a remote repository 
+# git remote add oldrepo https://github.com/olesj98/new-test-transfer.git
+
+# # get the old repo commits
+# git remote update
+
+# # examine the whole tree
+# git log --all --oneline --graph --decorate
+
+# # copy (cherry-pick) the commits from the old repo into your new local one
+# git cherry-pick sha-of-commit-one
+# git cherry-pick sha-of-commit-two
+# git cherry-pick sha-of-commit-three
+
+# # check your local repo is correct
+# git log
+
+# # send your new tree (repo state) to github
+# git push origin master
+
+# # remove the now-unneeded reference to oldrepo
+# git remote remove oldrepo
+# ########################################################
+
+git remote add -f repo_b_origin https://github.com/olesj98/new-test-transfer.git
+git remote update
+git diff master repo_b_origin/master
+git remote rm repo_b_origin
