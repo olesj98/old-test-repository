@@ -65,13 +65,13 @@ git remote add -f repo_b_origin https://github.com/olesj98/new-test-transfer.git
 git remote update
 # git rev-list remotes/repo_b_origin/master..master --format="%h - %ad - %s" --date=format:'%b %d %Y'
 # git diff remotes/repo_b_origin/master master
+git checkout $branch
 for commit in $(git rev-list remotes/repo_b_origin/$branch_target..$branch)
 do
     echo $commit
-    git checkout $branch
     git cherry-pick -x --strategy=ours $commit
+    git push repo_b_origin $branch_target
 done
-git push repo_b_origin $branch_target
 # git cherry-pick remotes/repo_b_origin/$branch_target..$branch
 # git push -f repo_b_origin $branch_target
 # git cherry-pick --continue
