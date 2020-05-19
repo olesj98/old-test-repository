@@ -68,8 +68,11 @@ git remote update
 for commit in $(git rev-list remotes/repo_b_origin/$branch_target..$branch)
 do
     echo $commit
-    git cherry-pick $commit
-    git push repo_b_origin $branch_target
+    git checkout $branch
+    git cherry-pick -x --strategy=ours $commit
 done
-git cherry-pick --continue
+git push repo_b_origin $branch_target
+# git cherry-pick remotes/repo_b_origin/$branch_target..$branch
+# git push -f repo_b_origin $branch_target
+# git cherry-pick --continue
 git remote rm repo_b_origin
