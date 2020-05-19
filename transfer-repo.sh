@@ -71,4 +71,5 @@ do
     git cherry-pick $commit
     git push repo_b_origin $branch_target
 done
+git cherry-pick --continue
 git remote rm repo_b_origin
