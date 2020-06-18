@@ -1,2 +1,2 @@
 console.log('Hello GIT!');
-console.log('Hello GIT1.17!');
+console.log('Hello GIT1.18!');
